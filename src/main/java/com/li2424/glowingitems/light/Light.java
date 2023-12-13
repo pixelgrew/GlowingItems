@@ -8,6 +8,7 @@ import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.block.data.Levelled;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.PlayerInventory;
 
 import java.util.Iterator;
@@ -21,7 +22,8 @@ public class Light {
         for (int i = 0; i < 1; i++) {
             if (checkForAir(player, i)) {
                 if (Config.getGlowMaterials(plugin).contains(inv.getItemInMainHand().getType())
-                        || Config.getGlowMaterials(plugin).contains(inv.getItemInOffHand().getType())) {
+                        || Config.getGlowMaterials(plugin).contains(inv.getItemInOffHand().getType())
+                || (inv.getItem(EquipmentSlot.HEAD) != null && Config.getGlowMaterials(plugin).contains(inv.getItem(EquipmentSlot.HEAD).getType()))) {
                     Light.addSourceAt(plugin, player, i, 15);
                 }
             }
