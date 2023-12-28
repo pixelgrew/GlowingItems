@@ -18,16 +18,17 @@ public class Light {
     public static void updateForPlayer(GlowingItems plugin, Player player) {
         PlayerInventory inv = player.getInventory();
 
-        Light.clear(plugin, player);
-        for (int i = 0; i < 1; i++) {
+        for (int i = 0; i <= 1; i++) {
+            Light.clear(plugin, player);
             if (checkForAir(player, i)) {
                 if (Config.getGlowMaterials(plugin).contains(inv.getItemInMainHand().getType())
                         || Config.getGlowMaterials(plugin).contains(inv.getItemInOffHand().getType())
-                || (inv.getItem(EquipmentSlot.HEAD) != null && Config.getGlowMaterials(plugin).contains(inv.getItem(EquipmentSlot.HEAD).getType()))) {
+                        || (inv.getItem(EquipmentSlot.HEAD) != null && Config.getGlowMaterials(plugin).contains(inv.getItem(EquipmentSlot.HEAD).getType()))) {
                     Light.addSourceAt(plugin, player, i, 15);
                 }
             }
         }
+
     }
 
     public static void clear(GlowingItems plugin, Player player) {
